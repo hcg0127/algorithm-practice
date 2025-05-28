@@ -10,8 +10,11 @@ int main() {
     cin >> t;
     while (t--) {
         cin >> n;
-        int ans = 0;
-        for (int i=1; i<=12; i++) ans += n/(int)pow(5,i);
+        int ans = 0, fi = 5;
+        for (int i=0; i<12; i++) {
+            ans += n/fi;
+            fi *= 5;
+        }
         cout << ans << '\n';
     }
 }

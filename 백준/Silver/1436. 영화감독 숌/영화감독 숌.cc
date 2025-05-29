@@ -9,7 +9,7 @@ int main() {
     cin.tie(0); cout.tie(0);
 
     cin >> n;
-    for (int i=666; i<=66666666; i++) {
+    for (int i=666; i<3000000; i++) {
         if (to_string(i).find("666")!=string::npos) cnt++;
         if (cnt==n) {
             cout << i;

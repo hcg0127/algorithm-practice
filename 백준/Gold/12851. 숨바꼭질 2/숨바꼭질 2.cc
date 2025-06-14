@@ -1,26 +1,25 @@
 #include <bits/stdc++.h>
-#define pii pair<int,int>
 using namespace std;
 
-int n,k,arr[100001],visited[100001];
+int n,k,cnt[100001],fast[100001];
 
-void bfs(int x) {
-  queue<int> q;
-  q.push(x);
-  arr[x]=1;
-  visited[x]=1;
-  while (!q.empty()) {
-    int cur = q.front();
-    q.pop();
-    for (auto i : {cur-1,cur+1,cur*2}) {
-        if (i<0 || i>100000) continue;
-        if (!arr[i]) {
-            q.push(i);
-            arr[i]=arr[cur]+1;
-            visited[i]+=visited[cur];
-        } else if (arr[i]==arr[cur]+1) visited[i]+=visited[cur];
+void bfs() {
+    deque<int> dq;
+    dq.push_front(n);
+    cnt[n]=0;
+    fast[n]=1;
+    while (!dq.empty()) {
+        int cur = dq.front();
+        dq.pop_front();
+        for (auto i : {cur-1, cur+1, cur*2}) {
+            if (i<0 || i>100000) continue;
+            if (cnt[i]==-1) {
+                cnt[i] = cnt[cur]+1;
+                fast[i] = fast[cur];
+                dq.push_back(i);
+            } else if (cnt[i]==cnt[cur]+1) fast[i] += fast[cur];
+        }
     }
-  }
 }
 
 int main() {
@@ -28,10 +27,7 @@ int main() {
     cin.tie(0); cout.tie(0);
 
     cin >> n >> k;
-    if (n==k) {
-        cout << 0 << '\n' << 1;
-        return 0;
-    }
-    bfs(n);
-    cout << arr[k]-1 << '\n' << visited[k];
+    fill(cnt,cnt+100001,-1);
+    bfs();
+    cout << cnt[k] << '\n' << fast[k];
 }

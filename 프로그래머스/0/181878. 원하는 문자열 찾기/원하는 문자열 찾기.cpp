@@ -9,5 +9,5 @@ int solution(string myString, string pat) {
     for (auto &p:pat) {
         p = toupper(p);
     }
-    return (myString.find(pat)!=EOF ? 1 : 0);
+    return myString.find(pat)!=EOF;
 }

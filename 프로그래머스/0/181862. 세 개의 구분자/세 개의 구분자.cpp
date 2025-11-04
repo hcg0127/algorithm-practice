@@ -14,10 +14,6 @@ vector<string> solution(string myStr) {
         } else tmp.push_back(c);
     }
     if (tmp.compare("")!=0) answer.push_back(tmp);
-    if (answer.empty()) {
-        vector<string> v;
-        v.push_back("EMPTY");
-        return v;
-    } else return answer;
-    return (answer.empty() ? vector<string>() : answer);
+    if (answer.empty()) answer.push_back("EMPTY");
+    return answer;
 }

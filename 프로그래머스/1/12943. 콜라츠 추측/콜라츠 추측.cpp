@@ -6,10 +6,9 @@ using namespace std;
 int solution(int tmp) {
     int answer = 0;
     long long num = tmp;
-    while (num>1) {
+    while (num>1 && answer<=500) {
         answer++;
-        if (num&1) num = num*3+1;
-        else num/=2;
+        num = num&1 ? num*3+1 : num/=2;
     }
     return answer>500 ? -1 : answer;
 }

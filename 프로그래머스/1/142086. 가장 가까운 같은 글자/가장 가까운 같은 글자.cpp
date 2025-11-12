@@ -13,11 +13,10 @@ vector<int> solution(string s) {
         if (!al[c-'a']) {
             answer.push_back(-1);
             al[c-'a']=1;
-            pos[c-'a']=i;
         } else {
             answer.push_back(i-pos[c-'a']);
-            pos[c-'a']=i;
         }
+        pos[c-'a']=i;
     }
     return answer;
 }

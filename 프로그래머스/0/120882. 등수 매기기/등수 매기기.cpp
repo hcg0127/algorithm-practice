@@ -1,24 +1,24 @@
 #include <bits/stdc++.h>
-#define pdi pair<double,int>
+#define pii pair<int,int>
 
 using namespace std;
 
-bool cmp1(pdi a, pdi b) {
+bool cmp1(pii a, pii b) {
     return a.first>b.first;
 }
 
-bool cmp2(pdi a, pdi b) {
+bool cmp2(pii a, pii b) {
     return a.second<b.second;
 }
 
 vector<int> solution(vector<vector<int>> score) {
-    vector<pdi> tmp;
+    vector<pii> tmp;
     int vs = score.size();
     for (int i=0; i<vs; i++) {
-        tmp.push_back({(double)(score[i][0]+score[i][1])/2, i});
+        tmp.push_back({score[i][0]+score[i][1], i});
     }
     sort(tmp.begin(),tmp.end(),cmp1);
-    map<double,int,greater<double>> m;
+    map<double,int,greater<int>> m;
     for (auto v : tmp) {
         m[v.first]++;
     }

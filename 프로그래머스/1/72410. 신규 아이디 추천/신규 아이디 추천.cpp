@@ -15,11 +15,11 @@ string solution(string new_id) {
         ans.push_back(c);
     }
     new_id = ans;
-    if (new_id[0]=='.') new_id.erase(new_id.begin());
-    if (new_id[new_id.size()-1]=='.') new_id.erase(new_id.end()-1);
+    if (new_id.front()=='.') new_id.erase(new_id.begin());
+    if (new_id.back()=='.') new_id.erase(new_id.end()-1);
     if (new_id.empty()) new_id+="a";
     if (new_id.size()>15) new_id.erase(new_id.begin()+15,new_id.end());
-    if (new_id[new_id.size()-1]=='.') new_id.erase(new_id.end()-1);
-    if (new_id.size()<=2) new_id.insert(new_id.end(),3-new_id.size(),new_id[new_id.size()-1]);
+    if (new_id.back()=='.') new_id.erase(new_id.end()-1);
+    if (new_id.size()<=2) new_id.insert(new_id.end(),3-new_id.size(),new_id.back());
     return new_id;
 }

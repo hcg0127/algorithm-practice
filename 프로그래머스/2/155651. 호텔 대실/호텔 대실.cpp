@@ -9,17 +9,9 @@ int solution(vector<vector<string>> book_time) {
     for (auto vs : book_time) {
         int start = stoi(vs[0].substr(0,2)) * 60 + stoi(vs[0].substr(3,2));
         int end = stoi(vs[1].substr(0,2)) * 60 + stoi(vs[1].substr(3,2)) + 10;
-        if (pq.empty()) {
-            pq.push(end);
-            answer++;
-        }
-        else if (pq.top() <= start) {
-            pq.pop();
-            pq.push(end);
-        } else {
-            answer++;
-            pq.push(end);
-        }
+        if (!pq.empty() && pq.top()<=start) pq.pop();
+        else answer++;
+        pq.push(end);
     }
     return answer;
 }
